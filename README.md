@@ -6,14 +6,15 @@ Boilerplate for Grunt `>= 0.4`
 How to use
 -------------
 
-*	Install node `>= 0.8.0`
+*	Install Node.js `>= 0.8.0` and Ruby
 *	Type `npm install` to install all the modules
-*	Use the grunt command to run what you need
+*	Use the `grunt x` command to run what you need
 
-### Avalaible commands are
+Avalaible commands are
+-------------
 
-*	js
-*	css
-*	img
-*	test
-*	default
+*	`grunt js` everything related to javascript
+*	`grunt css` compile the compass project
+*	`grunt img` optimize png images
+*	`grunt test` lint the javascript
+*	`grunt default` runs everything
