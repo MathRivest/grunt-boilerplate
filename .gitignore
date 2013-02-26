@@ -215,5 +215,5 @@ pip-log.txt
 .mr.developer.cfg
 
 #project specific
-node_module
+node_modules
 .sass-cache
