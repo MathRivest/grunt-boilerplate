@@ -59,6 +59,17 @@ module.exports = function(grunt) {
           src: ['src/img/*.png'],
           dest: 'dist/img/'
       }
+    },
+    //connect to a local webserver
+    //grunt connect:server:keepalive
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          base: '' //Base path is the current folder
+        },
+        keepalive: true
+      }
     }
   });
 
@@ -78,6 +89,7 @@ module.exports = function(grunt) {
 
   // Other
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
 
 /* - Register tasks --------------------------------------------------------------- */
@@ -98,6 +110,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'compass', 'imagemin']);
 
 
-  //TODO : COMPASS WATCH + SMUSH IT
+  //TODO :  image min
 
 };
