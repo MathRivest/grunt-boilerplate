@@ -86,8 +86,7 @@ module.exports = function(grunt) {
         options: {
           port: 9001,
           base: '' //Base path is the current folder
-        },
-        keepalive: true
+        }
       }
     },
     open: {
@@ -114,8 +113,8 @@ module.exports = function(grunt) {
 
   // Other
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-open');
 
 
 /* - Register tasks --------------------------------------------------------------- */
@@ -133,7 +132,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['jshint']);
 
   // Start a local web server
-  grunt.registerTask('start', [ 'open', 'connect:server:keepalive']);
+  grunt.registerTask('start', [ 'open', 'connect', 'watch']);
 
   // All
   grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'compass', 'imagemin']);
