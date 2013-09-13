@@ -36,8 +36,14 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
+      js: {
+        files: ['<%= jshint.files %>'],
+        tasks: ['jshint']
+      },
+      css: {
+        files: ['src/**/*.scss'],
+        tasks: ['compass']
+      }
     },
     // Link to config and update the paths
     compass: {
@@ -49,19 +55,32 @@ module.exports = function(grunt) {
         }
       }
     },
-    // Only works with PNG (not JPG)
     imagemin: {
-      dist: {
+      png: {
         options: {
-          optimizationLevel: 3,
+          optimizationLevel: 7
+        },
+        files: [{
+            expand: true,
+            cwd: 'src/img',
+            src: ['**/*.png'],
+            dest: 'dist/img/',
+            ext: '.png'
+        }]
+      },
+      jpg: {
+        options: {
           progressive: true
         },
-          src: ['src/img/*.png'],
-          dest: 'dist/img/'
+        files: [{
+            expand: true,
+            cwd: 'src/img',
+            src: ['**/*.jpg'],
+            dest: 'dist/img/',
+            ext: '.jpg'
+        }]
       }
     },
-    //connect to a local webserver
-    //grunt connect:server:keepalive
     connect: {
       server: {
         options: {
@@ -69,6 +88,12 @@ module.exports = function(grunt) {
           base: '' //Base path is the current folder
         },
         keepalive: true
+      }
+    },
+    open: {
+      all: {
+        // Gets the port from the connect configuration
+        path: 'http://localhost:<%= connect.server.options.port%>'
       }
     }
   });
@@ -89,6 +114,7 @@ module.exports = function(grunt) {
 
   // Other
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-connect');
 
 
@@ -106,10 +132,10 @@ module.exports = function(grunt) {
   // Test tasks
   grunt.registerTask('test', ['jshint']);
 
+  // Start a local web server
+  grunt.registerTask('start', [ 'open', 'connect:server:keepalive']);
+
   // All
   grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'compass', 'imagemin']);
-
-
-  //TODO :  image min
 
 };
