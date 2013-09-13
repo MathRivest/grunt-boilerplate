@@ -18,6 +18,9 @@ Avalaible commands are
 
 *	`grunt js` everything related to javascript
 *	`grunt css` compile the compass project
-*	`grunt img` optimize png images
+*	`grunt img` optimize all images
 *	`grunt test` lint the javascript
 *	`grunt default` runs everything
+*	`grunt watch` watch for changes
+*	`grunt start` opens the project, starts a local webserver and watch for changes
+*	and more!
